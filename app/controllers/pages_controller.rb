@@ -4,9 +4,10 @@ class PagesController < ApplicationController
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o-mini",
-      messages: [{ role: "user", content: 'Tell a short story for a child between 3 and 5 years old.
+      messages: [{ role: "user", content: 'Tell a short story in French for a child between 3 and 5 years old.
       First, provide a title for the story labeled as "Title:".
-      Then, write the story content under "Story:". Make sure the title is short, compelling and relevant to the story content.
+      Then, write the story content under "Story:".
+      Make sure the title is short, compelling and relevant to the story content and make sure the story is suitable for a child.
       Format your response like this:
       Title: [Insert Title]
       Story: [Insert Story]' }]
