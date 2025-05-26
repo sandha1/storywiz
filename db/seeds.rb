@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+FORBIDDENFR = ["merde", "con", "connard"]
+ForbiddenWord.delete_all
+
+puts("Declaring fordidden words into db for fr : ")
+FORBIDDENFR.each do |word|
+  w = ForbiddenWord.create(language:"fr", word:word)
+  puts("- #{w.word}")
+end

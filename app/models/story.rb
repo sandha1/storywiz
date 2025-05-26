@@ -1,6 +1,7 @@
 class Story < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
+  validate :all_safe_words?
 
   def create_story
 
@@ -17,6 +18,13 @@ class Story < ApplicationRecord
     c= g.gsub("json\n","")
     return JSON.parse(c,symbolize_names: true)
 
+  end
+
+  def all_safe_words?
+    ForbiddenWord.all.each do |word|
+      return errors.add(:content, "contient des mots interdits") if content.include?(word.word) || title.include?(word.word)
+    end
+    return true
   end
 
 end
