@@ -1,4 +1,6 @@
-<h1>Raconte-moi une histoire</h1>
+<div data-controller="story-generator">
+  <button data-action="click->story-generator#generate">Raconte-moi une histoire</button>
+</div>
 
-<h2><%= @story.title %></h2>
-<p><%= @story.content %></p>
+<h2 id="story-title"></h2>
+<p id="story-content"></p>

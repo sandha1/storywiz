@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root to: "pages#home"
 
-  resources :stories, only: [:create]
+  post "generate_story", to: "pages#generate_story"
 end

@@ -1,23 +1,34 @@
 class PagesController < ApplicationController
 
   def home
+  end
+
+  def generate_story
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o-mini",
-      messages: [{ role: "user", content: 'Tell a short story in French for a child between 3 and 5 years old.
-      First, provide a title for the story labeled as "Title:".
-      Then, write the story content under "Story:".
-      Make sure the title is short, compelling and relevant to the story content and make sure the story is suitable for a child.
-      Format your response like this:
-      Title: [Insert Title]
-      Story: [Insert Story]' }]
+      messages: [{
+        role: "user",
+        content: <<~TEXT
+          Tell a short story in French for a child between 3 and 5 years old.
+          The response must be in **valid JSON format** and must be structured like this:
+          {
+          "title": "[Insert story title]",
+          "content": "[Insert story content]"
+          }
+          Only return valid JSON, no extra text or formatting outside of this structure.
+          Make sure the title is short, compelling and relevant to the story content and make sure the story is suitable for a child.
+        TEXT
+      }]
     })
 
     response = chatgpt_response["choices"][0]["message"]["content"]
+    response_json = JSON.parse(response)
 
-    @story_title = response.match(/^Title:\s*(.+?)\s*Story:/m)[1].strip
-    @story_content = response.match(/Story:\s*(.+)/m)[1].strip
-
-    @story = Story.new({ title: @story_title, content: @story_content })
+    if response_json["title"].present? && response_json["content"].present?
+      render json: response_json, status: :ok
+    else
+      render json: { error: "Format JSON incorrect" }, status: :unprocessable_entity
+    end
   end
 end
