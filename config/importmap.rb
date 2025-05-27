@@ -8,3 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 # Project pin
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
+pin "font-awesome", to: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js", preload: true
