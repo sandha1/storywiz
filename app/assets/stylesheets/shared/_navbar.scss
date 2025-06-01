@@ -1,0 +1,64 @@
+// .navbar-button {
+//   background-color: #f07167;
+//   color: #1a1b25;
+//   font-family: "Spectral", serif;
+//   font-weight: 700;
+//   font-style: normal;
+//   font-size: 24px;
+//   border: 1px solid #1a1b25;
+//   border-radius: 8px;
+//   padding: 8px 16px;
+//   transition: background-color 0.3s ease;
+//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+//   width: 300px;
+//   height: 300px;
+//   border-radius: 50%;
+
+//   &:hover {
+//     background-color: lighten(#f07167, 15%);
+//     color: #1a1b25;
+//   }
+// }
+
+.navbar-button {
+  border: none;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: #f07167;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+
+  &:hover {
+    background: linear-gradient(0deg,#A47CF3,#683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+    inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+    0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+  }
+
+  &:hover .text {
+    color: white;
+  }
+
+  &:hover .sparkle {
+    fill: white;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle {
+  fill: #AAAAAA;
+  transition: all 800ms ease;
+}
+
+.text {
+  font-weight: 600;
+  color: #1a1b25;
+  font-size: medium;
+}
