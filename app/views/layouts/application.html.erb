@@ -12,6 +12,9 @@
 
   <body>
     <%= yield %>
-    <%= render "shared/navbar" %>
+
+    <div data-controller="story-generator">
+      <%= render "shared/navbar" %>
+    </div>
   </body>
 </html>
