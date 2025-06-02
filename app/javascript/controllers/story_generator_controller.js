@@ -17,7 +17,8 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then(data => {
-      this.titleTarget.textContent = data.title;
+      document.getElementById("story-title").textContent = data.title;
+      document.getElementById("story-content").textContent = data.content;
       this.pages = this.paginateContent(data.content);
       this.currentPage = 0;
       this.displayPage();
