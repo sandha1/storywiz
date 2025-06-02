@@ -22,15 +22,26 @@ body {
   font-family: "Spectral", serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 24px;
   background-color: #fed9b7;
   color: #392061;
+  margin: 0 auto;
+  padding: 32px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Mountains of Christmas", serif;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 32px;
 }
 
 a {
   text-decoration: none;
+}
+
+p {
+  font-size: 24px;
 }
