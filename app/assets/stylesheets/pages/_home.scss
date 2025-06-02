@@ -1,6 +1,15 @@
-.library {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+.story-container {
+  padding: 32px;
+}
+
+#story-title {
+  font-size: 40px;
+  color: #f07167;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+#story-content {
+  text-align: justify;
 }

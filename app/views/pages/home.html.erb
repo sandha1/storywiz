@@ -1,18 +1,4 @@
-<div data-controller="story-generator">
-  <div class="library">
-    <div>
-      <span style="color: #392061; font-size: 64px; ">
-        <i class="fa-solid fa-wand-sparkles" data-story-generator-target="wand"></i>
-      </span>
-    </div>
-
-    <div>
-      <%= image_tag "bibliotheque.png", width: 250 if Rails.application.assets.find_asset('bibliotheque.png') %>
-    </div>
-  </div>
-
-    <button data-action="click->story-generator#generate" class="btn-coral">Raconte-moi une histoire</button>
+<div class="story-container">
+  <h2 id="story-title"></h2>
+  <p id="story-content"></p>
 </div>
-
-<h2 id="story-title"></h2>
-<p id="story-content"></p>
