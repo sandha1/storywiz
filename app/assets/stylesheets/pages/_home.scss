@@ -1,5 +1,7 @@
-.story-container {
-  padding: 32px;
+#home-title {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 16px;
 }
 
 #story-title {
@@ -12,4 +14,40 @@
 
 #story-content {
   text-align: justify;
+}
+
+.story-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.story-page {
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #fdfcdc;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.nav-buttons button {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
