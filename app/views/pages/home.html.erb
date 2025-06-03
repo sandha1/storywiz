@@ -1,4 +1,12 @@
+<h1 id="home-title">Raconte-moi une histoire</h1>
+
 <div class="story-container">
-  <h2 id="story-title"></h2>
-  <p id="story-content"></p>
+  <h2 id="story-title" data-story-generator-target="title"></h2>
+
+  <div class="story-page" id="story-content" data-story-generator-target="story"></div>
+
+  <div class="nav-buttons">
+    <button data-action="click->story-generator#prev">←</button>
+    <button data-action="click->story-generator#next">→</button>
+  </div>
 </div>
