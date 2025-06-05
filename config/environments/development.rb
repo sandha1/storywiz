@@ -73,4 +73,9 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  #pour tester sur mobile
+  # config.hosts << "172.23.48.1"
+  # config.hosts << "4ce0-2001-861-388d-3c60-f8ff-6cb5-9fab-2e70.ngrok-free.app "
+  config.hosts << /[a-z0-9\-]+\.ngrok-free\.app/
 end

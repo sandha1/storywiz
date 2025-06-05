@@ -14,14 +14,48 @@
       acceleration: true,
       elevation: 0,
       inclination: 1,
-      turnCorners: "tr,tl",
+      turnCorners: 'bl',
 
     });
-  });
+
+
+    // tentative fonction de swipe
+
+    let touchStartX = 0;
+      let touchEndX = 0;
+
+      const flipbook = document.getElementById("flipbook");
+
+      flipbook.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, false);
+
+      flipbook.addEventListener('touchend', function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, false);
+
+      function handleSwipeGesture() {
+        const threshold = 50; // pixels à dépasser pour considérer un swipe
+        if (touchEndX < touchStartX - threshold) {
+          // Swipe vers la gauche → Page suivante
+          $("#flipbook").turn("next");
+        } else if (touchEndX > touchStartX + threshold) {
+          // Swipe vers la droite → Page précédente
+          $("#flipbook").turn("previous");
+        }
+      };
+
+    });
+  // fin de tentative fonction de swipe
+
+
+
+
 </script>
 
 <div class="story-container">
-  <h2 id="story-title" data-story-generator-target="title">titre de l'histoire</h2>
+  <h2 id="story-title" data-story-generator-target="title">tittrre de l'histoire</h2>
   <div id="flipbook">
       <div class="story-page" id="story-content" data-story-generator-target="story">
         Le petit lapin curieux
