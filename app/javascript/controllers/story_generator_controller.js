@@ -13,7 +13,25 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       document.getElementById("story-title").textContent = data.title;
-      document.getElementById("story-content").textContent = data.content;
+      const texte = data.content
+      document.getElementById("story-content").textContent = texte.slice(0,100);
+      let besoinPage = true;
+      let numCaractere = 101;
+      const longueurTexte = texte.length
+      const book = document.getElementById("flipbook")
+      if (longueurTexte < numCaractere) {
+          besoinPage = false;
+        }
+
+      while ( besoinPage === true ) {
+        console.log("crea nouvelle page")
+        book.insertAdjacentHTML("beforeend", `<div class="story-page" data-story-generator-target="story">${texte.slice(numCaractere , numCaractere + 100)}</div>`)
+        numCaractere = numCaractere + 100 + 1
+        if (longueurTexte < numCaractere) {
+          besoinPage = false;
+        }
+      };
+
     })
     .catch(error => console.error("Erreur :", error))
     .finally(() => {
