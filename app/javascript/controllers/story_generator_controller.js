@@ -25,7 +25,7 @@ export default class extends Controller {
 
       while ( besoinPage === true ) {
         console.log("crea nouvelle page")
-        book.insertAdjacentHTML("beforeend", `<div class="story-page" data-story-generator-target="story">${texte.slice(numCaractere , numCaractere + 100)}</div>`)
+        book.insertAdjacentHTML("beforeend", `<div class="page story-page" id="story-content" data-story-generator-target="story">${texte.slice(numCaractere , numCaractere + 100)}</div>`)
         numCaractere = numCaractere + 100 + 1
         if (longueurTexte < numCaractere) {
           besoinPage = false;

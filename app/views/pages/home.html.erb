@@ -6,15 +6,13 @@
     $("#flipbook").turn({
       // width: 400,
       // height: 600,
-      // size: 'stretch',
+
 
       autoCenter: true,
       display: 'single',
       gradients: true,
       acceleration: true,
-      elevation: 0,
-      inclination: 1,
-      turnCorners: '',
+      duration: 600
 
     });
 
@@ -36,13 +34,16 @@
       }, false);
 
       function handleSwipeGesture() {
-        const threshold = 50; // pixels à dépasser pour considérer un swipe
+        console.log("swipe détecté" )
+        const threshold = 15; // pixels à dépasser pour considérer un swipe
         if (touchEndX < touchStartX - threshold) {
           // Swipe vers la gauche → Page suivante
-          $("#flipbook").turn("next");
+          console.log("page suivante")
+          $("#flipbook").turn("page", +1);
         } else if (touchEndX > touchStartX + threshold) {
           // Swipe vers la droite → Page précédente
-          $("#flipbook").turn("previous");
+          console.log("page precedente")
+          $("#flipbook").turn("page", -1);
         }
       };
 
@@ -55,12 +56,9 @@
 </script>
 
 <div class="story-container">
-  <h2 id="story-title" data-story-generator-target="title">tittrre de l'histoire</h2>
+  <h2 id="story-title" data-story-generator-target="title"></h2>
   <div id="flipbook">
-      <div class="story-page" id="story-content" data-story-generator-target="story">
-        Le petit lapin curieux
-Il était une fois un petit lapin nommé Lulu. Lulu adorait explorer la forêt. Un jour, il a découvert un joli papillon aux ailes jaunes. Le papillon a dit : "Suis-moi, Lulu !". Lulu a couru derrière le papillon à travers les fleurs colorées. Ils ont sauté par-dessus des ruisseaux et joué sous les grands arbres. À la fin de la journée, Lulu a appris que l'amitié est le plus beau des trésors. Et depuis ce jour, Lulu et le papillon étaient les meilleurs amis du monde.
-      </div>
+      <div class="page story-page" id="story-content" data-story-generator-target="story"></div>
     </div>
   </div>
 </div>
