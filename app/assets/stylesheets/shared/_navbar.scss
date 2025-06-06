@@ -77,8 +77,11 @@
   }
 
   &:active {
-    box-shadow: none;
-    transform: translateX(-50%) translateY(1px);
+    box-shadow: 0 0.2em 0.5em -0.1em rgba(26, 27, 37, 0.7) inset, 0 2px 8px rgba(0,0,0,0.15);
+    background: linear-gradient(0deg, #2a1747 60%, #392061 100%);
+    transform: translateX(-50%) translateY(6px) scale(0.96);
+    filter: brightness(0.92);
+    transition: all 80ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
