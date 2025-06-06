@@ -1,60 +1,5 @@
 <h1 id="home-title">Raconte-moi une histoire</h1>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-     console.log("turn.js loaded")
-    $("#flipbook").turn({
-      // width: 400,
-      // height: 600,
-
-
-      autoCenter: true,
-      display: 'single',
-      gradients: true,
-      acceleration: true,
-      duration: 600
-
-    });
-
-
-    // tentative fonction de swipe
-
-    let touchStartX = 0;
-      let touchEndX = 0;
-
-      const flipbook = document.getElementById("flipbook");
-
-      flipbook.addEventListener('touchstart', function (e) {
-        touchStartX = e.changedTouches[0].screenX;
-      }, false);
-
-      flipbook.addEventListener('touchend', function (e) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipeGesture();
-      }, false);
-
-      function handleSwipeGesture() {
-        console.log("swipe détecté" )
-        const threshold = 15; // pixels à dépasser pour considérer un swipe
-        if (touchEndX < touchStartX - threshold) {
-          // Swipe vers la gauche → Page suivante
-          console.log("page suivante")
-          $("#flipbook").turn("page", +1);
-        } else if (touchEndX > touchStartX + threshold) {
-          // Swipe vers la droite → Page précédente
-          console.log("page precedente")
-          $("#flipbook").turn("page", -1);
-        }
-      };
-
-    });
-  // fin de tentative fonction de swipe
-
-
-
-
-</script>
-
 <div class="story-container">
   <h2 id="story-title" data-story-generator-target="title"></h2>
   <div id="flipbook">
@@ -62,7 +7,8 @@
     </div>
   </div>
 </div>
-    <div class="nav-buttons">
-      <button data-action="click->story-generator#prev">←</button>
-      <button data-action="click->story-generator#next">→</button>
-    </div>
+
+<div class="nav-buttons">
+  <button data-action="click->story-generator#clickLeft">←</button>
+  <button data-action="click->story-generator#clickRight">→</button>
+</div>
