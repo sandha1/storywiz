@@ -6,11 +6,18 @@
       <%= image_tag "logo.png" %>
     </a>
 
-    <button data-action="click->story-generator#generate" class="navbar-button position-absolute start-50 translate-middle-x" style="bottom: 8px;">
-      <svg height="48" width="48" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
-        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-      </svg>
-      <span class="text">HISTOIRE</span>
+    <button data-action="click->story-generator#generate" class="navbar-button">
+      <div class="text">
+        <span class="back"></span>
+        <span class="front">
+          <div>
+            Créer
+          </div>
+          <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" class="sparkle">
+            <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+          </svg>
+        </span>
+      </div>
     </button>
 
     <div class="btn-group dropup">
