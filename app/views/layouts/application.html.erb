@@ -8,12 +8,21 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <!-- jQuery (obligatoire) -->
+    <%= javascript_include_tag "https://code.jquery.com/jquery-3.6.0.min.js", defer: true %>
+
+    <!-- Turn.js -->
+    <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/0.11/turn.min.js"></script> %>
+    <%= javascript_include_tag "lib/turn.js", "data-turbo-track": "reload", defer: true  %>
+
   </head>
 
   <body>
-    <%= yield %>
 
     <div data-controller="story-generator">
+    <%= yield %>
+
+
       <%= render "shared/navbar" %>
     </div>
   </body>
