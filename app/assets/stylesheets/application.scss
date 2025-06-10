@@ -20,12 +20,20 @@
 
 body {
   font-family: "Spectral", serif;
-  font-weight: 700;
   font-style: normal;
-  background-color: #fed9b7;
+  font-size: 24px;
+  font-weight: 700;
+  background-image:
+    linear-gradient(135deg, #fed9b7 0%, #fcbf96 100%),
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-blend-mode: multiply;
+  background-repeat: repeat;
+  background-size: auto, auto;
+  background-attachment: fixed;
   color: #392061;
-  margin: 0 auto;
+  margin: 0;
   padding: 24px;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,15 +41,6 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-h1 {
-  font-weight: 900;
-  font-size: 32px;
-}
-
 a {
   text-decoration: none;
-}
-
-p {
-  font-size: 24px;
 }
