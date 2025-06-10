@@ -27,10 +27,9 @@
 
 .story-page {
   height: 65vh;
-  // display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   transition: transform 0.3s ease;
   padding: 1rem;
   border: 1px solid #ccc;
