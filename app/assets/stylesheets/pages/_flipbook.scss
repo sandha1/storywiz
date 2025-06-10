@@ -1,0 +1,47 @@
+#story-title {
+  font-size: 40px;
+  color: #f07167;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+#story-content {
+  text-align: justify;
+}
+
+.story-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.story-page {
+  height: 65vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #fdfcdc;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.flipbook-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.flipbook-buttons button {
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #392061;
+}
