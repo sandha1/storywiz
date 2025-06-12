@@ -10,7 +10,7 @@ export default class extends Controller {
     const book = document.getElementById("flipbook")
 
     book.innerHTML = `
-      <video autoplay loop style="width: 100%;">
+      <video autoplay loop">
         <source src="/videos/ink-animation.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
