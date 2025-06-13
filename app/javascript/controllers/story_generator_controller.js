@@ -7,11 +7,15 @@ export default class extends Controller {
   touchEndX = 0;
 
   generate() {
-    const book = document.getElementById("flipbook")
+    const animationContainer = document.getElementById("animation-container");
+    const flipbook = document.getElementById("flipbook");
 
-    book.innerHTML = `
+    flipbook.classList.add("hidden");
+    animationContainer.classList.remove("hidden");
+
+    animationContainer.innerHTML = `
       <div class="video-container">
-        <video autoplay loop">
+        <video autoplay loop muted>
           <source src="/videos/ink-animation.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -48,21 +52,23 @@ export default class extends Controller {
         }
       }
 
-      const book = document.getElementById("flipbook");
-
-      book.addEventListener('touchstart', (e) => {
+      flipbook.addEventListener('touchstart', (e) => {
         this.touchStartX = e.changedTouches[0].screenX;
         console.log("touchstart");
       }, false);
 
-      book.addEventListener('touchend', (e) => {
+      flipbook.addEventListener('touchend', (e) => {
         this.touchEndX = e.changedTouches[0].screenX;
         console.log("touchend");
         this.handleSwipeGesture();
       }, false);
 
       setTimeout(() => {
-        book.innerHTML += pagesHtml;
+        animationContainer.classList.add("hidden");
+        animationContainer.innerHTML = "";
+
+        flipbook.classList.remove("hidden");
+        flipbook.innerHTML += pagesHtml;
 
         $("#flipbook").turn({
           height: 600,
@@ -74,7 +80,6 @@ export default class extends Controller {
         });
       }, 500);
     })
-
     .catch(error => console.error("Erreur :", error))
     .finally(() => {
       document.getElementById("home-title").classList.add("d-none");
