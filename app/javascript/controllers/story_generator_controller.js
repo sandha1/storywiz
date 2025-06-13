@@ -7,6 +7,18 @@ export default class extends Controller {
   touchEndX = 0;
 
   generate() {
+    const book = document.getElementById("flipbook")
+
+    book.innerHTML = `
+      <div class="video-container">
+        <video autoplay loop">
+          <source src="/videos/ink-animation.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-color"></div>
+      </div>
+    `;
+
     fetch("/generate_story", {
       method: "POST",
       headers: {
@@ -17,53 +29,53 @@ export default class extends Controller {
     .then(data => {
       document.getElementById("story-title").textContent = data.title;
 
-      const story = data.content
-      document.getElementById("story-content").textContent = story.slice(0,100);
+      const story = data.content;
+      document.getElementById("story-content").textContent = story.slice(0, 100);
       let generatePage = true;
       let characLength = 101;
-      const textLength = story.length
-      const book = document.getElementById("flipbook")
-      if (textLength < characLength) {
-          generatePage = false;
-        }
+      const textLength = story.length;
+      let pagesHtml = "";
 
-      while ( generatePage === true ) {
-        book.insertAdjacentHTML("beforeend", `<div class="page story-page" data-story-generator-target="story">${story.slice(characLength , characLength + 100)}</div>`)
-        characLength = characLength + 100 + 1
+      if (textLength < characLength) {
+        generatePage = false;
+      }
+
+      while (generatePage === true) {
+        pagesHtml += `<div class="page story-page" data-story-generator-target="story">${story.slice(characLength, characLength + 100)}</div>`;
+        characLength = characLength + 100 + 1;
         if (textLength < characLength) {
           generatePage = false;
         }
-      };
-    })
+      }
 
-    .then (() => {
-    $("#flipbook").turn({
-      height: 600,
-      autoCenter: true,
-      display: 'single',
-      gradients: true,
-      acceleration: true,
-      duration: 600
-      });
-    })
+      const book = document.getElementById("flipbook");
 
-    .then(() => {
-      const flipbook = document.getElementById("flipbook");
-
-      flipbook.addEventListener('touchstart', (e) => {
+      book.addEventListener('touchstart', (e) => {
         this.touchStartX = e.changedTouches[0].screenX;
         console.log("touchstart");
       }, false);
 
-      flipbook.addEventListener('touchend', (e) => {
+      book.addEventListener('touchend', (e) => {
         this.touchEndX = e.changedTouches[0].screenX;
         console.log("touchend");
         this.handleSwipeGesture();
       }, false);
+
+      setTimeout(() => {
+        book.innerHTML += pagesHtml;
+
+        $("#flipbook").turn({
+          height: 600,
+          autoCenter: true,
+          display: 'single',
+          gradients: true,
+          acceleration: true,
+          duration: 600
+        });
+      }, 500);
     })
 
     .catch(error => console.error("Erreur :", error))
-
     .finally(() => {
       document.getElementById("home-title").classList.add("d-none");
     });
