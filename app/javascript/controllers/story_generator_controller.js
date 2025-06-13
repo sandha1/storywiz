@@ -7,6 +7,18 @@ export default class extends Controller {
   touchEndX = 0;
 
   generate() {
+    const book = document.getElementById("flipbook")
+
+    book.innerHTML = `
+      <div class="video-container">
+        <video autoplay loop">
+          <source src="/videos/ink-animation.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-color"></div>
+      </div>
+    `;
+
     fetch("/generate_story", {
       method: "POST",
       headers: {
@@ -16,59 +28,28 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       document.getElementById("story-title").textContent = data.title;
-      const texte = data.content
-      document.getElementById("story-content").textContent = texte.slice(0,100);
-      let besoinPage = true;
-      let numCaractere = 101;
-      const longueurTexte = texte.length
-      const book = document.getElementById("flipbook")
-      if (longueurTexte < numCaractere) {
-          besoinPage = false;
-        }
+      const texte = data.content;
+      const words = texte.split(/\s+/);
+      const wordsPerPage = 40; // adjust as needed
+      let pagesHtml = "";
 
-      while ( besoinPage === true ) {
-        console.log("crea nouvelle page")
-        book.insertAdjacentHTML("beforeend", `<div class="page story-page" data-story-generator-target="story">${texte.slice(numCaractere , numCaractere + 100)}</div>`)
-        numCaractere = numCaractere + 100 + 1
-        if (longueurTexte < numCaractere) {
-          besoinPage = false;
-        }
-      };
+      for (let i = 0; i < words.length; i += wordsPerPage) {
+        const pageText = words.slice(i, i + wordsPerPage).join(" ");
+        pagesHtml += `<div class="page story-page" data-story-generator-target="story">${pageText}</div>`;
+      }
 
-    })
-    // ajout turnjs
+      setTimeout(() => {
+        book.innerHTML = pagesHtml;
 
-    .then (() => {
-     console.log("turn.js loaded");
-    $("#flipbook").turn({
-      // width: 400,
-      height: 600,
-
-
-      autoCenter: true,
-      display: 'single',
-      gradients: true,
-      acceleration: true,
-      duration: 600
-
-      });
-    })
-    // fin ajout turnjs
-    //ajout des event listeners
-    .then(() => {
-      console.log("lancement crea fct swipe");
-      const flipbook = document.getElementById("flipbook");
-
-      flipbook.addEventListener('touchstart', (e) => {
-        this.touchStartX = e.changedTouches[0].screenX;
-        console.log("touchstart");
-      }, false);
-
-      flipbook.addEventListener('touchend', (e) => {
-        this.touchEndX = e.changedTouches[0].screenX;
-        console.log("touchend");
-        this.handleSwipeGesture();
-      }, false);
+        $("#flipbook").turn({
+          height: 600,
+          autoCenter: true,
+          display: 'single',
+          gradients: true,
+          acceleration: true,
+          duration: 600
+        });
+      }, 500);
     })
     .catch(error => console.error("Erreur :", error))
     .finally(() => {
@@ -77,25 +58,19 @@ export default class extends Controller {
   }
 
   handleSwipeGesture() {
-    console.log("swipe détecté");
     const threshold = 15;
     if (this.touchEndX < this.touchStartX - threshold) {
-      console.log("page suivante");
       $("#flipbook").turn("next");
     } else if (this.touchEndX > this.touchStartX + threshold) {
-      console.log("page precedente");
       $("#flipbook").turn("previous");
     }
   }
 
   clickRight() {
-    console.log("tournage de page suivante");
     $("#flipbook").turn("next");
   }
 
   clickLeft() {
-    console.log("tournage de page précèdente");
     $("#flipbook").turn("previous");
   }
-
 }
