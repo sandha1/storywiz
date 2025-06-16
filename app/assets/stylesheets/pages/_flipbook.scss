@@ -1,31 +1,9 @@
+.hidden {
+  display: none !important;
+}
 
 #flipbook {
   height: 600px;
-
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-  }
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  .video-color {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%;
-    height: 100%;
-    background: #fdfcdc;
-    opacity: 0.9;
-    border-radius: 12px;
-    pointer-events: none;
-  }
 }
 
 #story-title {
@@ -51,9 +29,9 @@
 
 .story-page {
   height: 65vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   transition: transform 0.3s ease;
   padding: 1rem;
   border: 1px solid #ccc;
@@ -62,15 +40,16 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.nav-buttons {
+.flipbook-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  align-items: flex-end;
 }
 
-.nav-buttons button {
-  font-size: 1.5rem;
+.flipbook-buttons button {
+  font-size: 3rem;
   background: none;
   border: none;
   cursor: pointer;
+  color: #392061;
 }
