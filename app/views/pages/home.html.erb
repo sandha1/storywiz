@@ -3,14 +3,14 @@
 <div class="story-container">
   <h2 id="story-title" data-story-generator-target="title"></h2>
   <%= image_tag('page_v1.svg', alt: 'page', class: 'background-image') %>
+  <div id="animation-container" class="hidden"></div>
   <div id="flipbook">
     <div class="page story-page" id="story-content" data-story-generator-target="story">
     </div>
   </div>
-</div>
 
-
-<div class="nav-buttons">
-  <button data-action="click->story-generator#clickLeft">←</button>
-  <button data-action="click->story-generator#clickRight">→</button>
+  <div class="flipbook-buttons">
+        <button data-action="click->story-generator#clickLeft">◀</button>
+        <button data-action="click->story-generator#clickRight">▶</button>
+  </div>
 </div>
