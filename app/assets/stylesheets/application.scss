@@ -32,8 +32,15 @@ body {
   background-attachment: fixed;
   color: #392061;
   margin: 0;
-  padding: 24px;
-  min-height: 100vh;
+  margin-bottom: 10%;
+  padding: 5%;
+  padding-bottom: 0;
+  // min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  height: 90vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
