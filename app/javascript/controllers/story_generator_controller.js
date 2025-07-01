@@ -72,6 +72,7 @@ export default class extends Controller {
 
         $("#flipbook").turn({
           height: 600,
+          width: 440,
           autoCenter: true,
           display: 'single',
           gradients: true,
